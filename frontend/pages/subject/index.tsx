@@ -22,7 +22,7 @@ export default function Home() {
               <h2>被験者名 &rarr;</h2>
             </div>
           </Link>
-                         <Link href="/subject/:subjectId/experiment" passHref>
+          <Link href="/subject/:subjectId/experiment" passHref>
             <div className={styles.card}>
               <h2>被験者名 &rarr;</h2>
             </div>
