@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "../../styles/Home.module.css";
-import subject from "../api/subject";
+import subject from "../api/Subject";
 
 export default function Home() {
   return (
