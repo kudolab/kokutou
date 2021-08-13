@@ -1,10 +1,24 @@
 import Head from "next/head";
 import Link from "next/link";
-import Image from "next/image";
 import styles from "../../styles/Home.module.css";
-import subject from "../api/Subject";
+import React from "react";
+import { subjectClient } from "../api";
 
-export default function Home() {
+export default function ListSubjects() {
+  const [subjects, setSubjects] = React.useState<Array<Subject>>([]);
+  const [loading, setLoading] = React.useState<boolean>(false);
+
+  React.useState(() => {
+    setLoading(true);
+    subjectClient
+      .getSubjects()
+      .then(setSubjects)
+      .catch((e) => {
+        console.dir(e, { depth: null });
+      })
+      .finally(() => setLoading(false));
+  });
+
   return (
     <div className={styles.container}>
       <Head>
@@ -17,28 +31,17 @@ export default function Home() {
         <h1 className={styles.title}>黒糖</h1>
         <p className={styles.description}>被験者選択ページ</p>
 
-        <div className={styles.grid}>
-          <Link href="/subject/:subjectId/experiment" passHref>
-            <div className={styles.card}>
-              <h2>被験者名 &rarr;</h2>
-            </div>
-          </Link>
-          <Link href="/subject/:subjectId/experiment" passHref>
-            <div className={styles.card}>
-              <h2>被験者名 &rarr;</h2>
-            </div>
-          </Link>
-          <Link href="/subject/:subjectId/experiment" passHref>
-            <div className={styles.card}>
-              <h2>被験者名 &rarr;</h2>
-            </div>
-          </Link>
-          <Link href="/subject/:subjectId/experiment" passHref>
-            <div className={styles.card}>
-              <h2>被験者名 &rarr;</h2>
-            </div>
-          </Link>
-        </div>
+        {!loading && (
+          <div className={styles.grid}>
+            {subjects.map((subject) => (
+              <Link href={`/subject/${subject.id}/experiment`} key={subject.id} passHref>
+                <div className={styles.card}>
+                  <h2>{subject.name} &rarr;</h2>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
       </main>
 
       <footer className={styles.footer}>Powered by {"kudolab"}</footer>
@@ -46,6 +49,6 @@ export default function Home() {
   );
 }
 
-function ListSubject({ subjects }) {}
+// function ListSubject({ subjects }) {}
 
-function get() {}
+// function get() {}
