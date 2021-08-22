@@ -1,4 +1,5 @@
 import json
+import random
 import sys
 import urllib.parse
 from typing import List
@@ -35,11 +36,21 @@ def run(qp_params: dict, results: List[dict]) -> dict:
             outcome=dict(response=res["response"])
         )
 
+    intensity_int: List[int] = list(map(int, map(lambda x: x * 10, intensity)))
+    stim_spacing: int = abs(intensity_int[1] - intensity_int[0])
+    stim_range = int(len(intensity_int) * 0.1)
+    stim_jitters = list(range(-stim_range * stim_spacing, (stim_range + 1) * stim_spacing, stim_spacing))
+    stim_jitter = random.choice(stim_jitters) / 10.0
+    stim = q.next_stim["intensity"]
+
+    if (stim + stim_jitter) in intensity:
+        stim += stim_jitter
+
     return {
         "statusCode": 200,
         "body": json.dumps(
             {
-                "next_stim": q.next_stim["intensity"],
+                "next_stim": stim,
             }
         ),
     }
