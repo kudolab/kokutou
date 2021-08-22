@@ -19,8 +19,8 @@ Resources:
         KokutouQuestPlus:
           Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
-            Path: /next_stim
-            Method: get
+            Path: /width/next_stim
+            Method: post
     Metadata:
       Dockerfile: Dockerfile
       DockerContext: ./kokutou_questplus

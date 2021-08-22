@@ -1,16 +1,11 @@
 {
-  "body": "",
+  "body": "{\"qp_params\":{\"stim_domain\":{\"intensity\":[5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,57.0,58.0,59.0,60.0,61.0,62.0,63.0,64.0,65.0,66.0,67.0,68.0,69.0,70.0]},\"param_domain\":{\"mean\":[5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,57.0,58.0,59.0,60.0,61.0,62.0,63.0,64.0,65.0,66.0,67.0,68.0,69.0,70.0],\"sd\":[2.0,4.0,6.0,8.0,10.0,12.0,14.0,16.0,18.0,20.0,22.0,24.0,26.0,28.0,30.0,32.0,34.0,36.0,38.0,40.0,42.0,44.0,46.0,48.0,50.0],\"lower_asymptote\":0.5,\"lapse_rate\":[0.01,0.02,0.03,0.04]},\"outcome_domain\":{\"response\":[\"Correct\",\"Incorrect\"]},\"prior\":null,\"func\":\"norm_cdf\",\"stim_scale\":\"linear\",\"stim_selection_method\":\"min_entropy\",\"param_estimation_method\":\"mean\"},\"results\":[{\"num_trial\":1,\"move_width\":\"330\",\"move_time\":\"80\",\"angle\":\"450\",\"rotation_direction\":\"c\",\"answer_rotation\":\"c\",\"response\":\"Correct\"},{\"num_trial\":2,\"move_width\":\"320\",\"move_time\":\"80\",\"angle\":\"450\",\"rotation_direction\":\"c\",\"answer_rotation\":\"c\",\"response\":\"Correct\"},{\"num_trial\":3,\"move_width\":\"290\",\"move_time\":\"80\",\"angle\":\"450\",\"rotation_direction\":\"c\",\"answer_rotation\":\"c\",\"response\":\"Correct\"},{\"num_trial\":4,\"move_width\":\"230\",\"move_time\":\"80\",\"angle\":\"450\",\"rotation_direction\":\"c\",\"answer_rotation\":\"c\",\"response\":\"Correct\"}]}",
   "resource": "/{proxy+}",
-  "path": "/next_stim",
-  "httpMethod": "GET",
+  "path": "/width/next_stim",
+  "httpMethod": "POST",
   "isBase64Encoded": true,
-  "queryStringParameters": {
-    "qp_params": "%7B%22qp_params%22:%7B%22stim_domain%22:%7B%22intensity%22:[5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,57.0,58.0,59.0,60.0,61.0,62.0,63.0,64.0,65.0,66.0,67.0,68.0,69.0,70.0]%7D,%22param_domain%22:%7B%22mean%22:[5.0,6.0,7.0,8.0,9.0,10.0,11.0,12.0,13.0,14.0,15.0,16.0,17.0,18.0,19.0,20.0,21.0,22.0,23.0,24.0,25.0,26.0,27.0,28.0,29.0,30.0,31.0,32.0,33.0,34.0,35.0,36.0,37.0,38.0,39.0,40.0,41.0,42.0,43.0,44.0,45.0,46.0,47.0,48.0,49.0,50.0,51.0,52.0,53.0,54.0,55.0,56.0,57.0,58.0,59.0,60.0,61.0,62.0,63.0,64.0,65.0,66.0,67.0,68.0,69.0,70.0],%22sd%22:[2.0,4.0,6.0,8.0,10.0,12.0,14.0,16.0,18.0,20.0,22.0,24.0,26.0,28.0,30.0,32.0,34.0,36.0,38.0,40.0,42.0,44.0,46.0,48.0,50.0],%22lower_asymptote%22:0.5,%22lapse_rate%22:[0.01,0.02,0.03,0.04]%7D,%22outcome_domain%22:%7B%22response%22:[%22Correct%22,%22Incorrect%22]%7D,%22prior%22:null,%22func%22:%22norm_cdf%22,%22stim_scale%22:%22linear%22,%22stim_selection_method%22:%22min_entropy%22,%22param_estimation_method%22:%22mean%22%7D%7D",
-    "results": "%7B%22results%22:[%7B%22num_trial%22:1,%22move_width%22:%22330%22,%22move_time%22:%2280%22,%22angle%22:%22450%22,%22rotation_direction%22:%22c%22,%22answer_rotation%22:%22c%22,%22response%22:%22Correct%22%7D,%7B%22num_trial%22:2,%22move_width%22:%22320%22,%22move_time%22:%2280%22,%22angle%22:%22450%22,%22rotation_direction%22:%22c%22,%22answer_rotation%22:%22c%22,%22response%22:%22Correct%22%7D,%7B%22num_trial%22:3,%22move_width%22:%22290%22,%22move_time%22:%2280%22,%22angle%22:%22450%22,%22rotation_direction%22:%22c%22,%22answer_rotation%22:%22c%22,%22response%22:%22Correct%22%7D,%7B%22num_trial%22:4,%22move_width%22:%22230%22,%22move_time%22:%2280%22,%22angle%22:%22450%22,%22rotation_direction%22:%22c%22,%22answer_rotation%22:%22c%22,%22response%22:%22Correct%22%7D]%7D"
-  },
-  "stageVariables": {
-    "baz": "qux"
-  },
+  "queryStringParameters": {},
+  "stageVariables": {},
   "headers": {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
     "Accept-Encoding": "gzip, deflate, sdch",

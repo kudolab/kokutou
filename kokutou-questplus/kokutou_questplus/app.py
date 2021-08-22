@@ -1,4 +1,5 @@
 import json
+import sys
 import urllib.parse
 from typing import List
 
@@ -6,8 +7,15 @@ import questplus as qp
 
 
 def lambda_handler(event, context):
-    qp_params = json.loads(urllib.parse.unquote(event["queryStringParameters"]["qp_params"]))["qp_params"]
-    results = json.loads(urllib.parse.unquote(event["queryStringParameters"]["results"]))["results"]
+    try:
+        qp_params = json.loads(urllib.parse.unquote(event["body"]))["qp_params"]
+        results = json.loads(urllib.parse.unquote(event["body"]))["results"]
+    except Exception as e:
+        print(e, file=sys.stderr)
+        return {
+            "statusCode": 400,
+            "body": json.dumps({"message": "request body is empty or invalid"})
+        }
 
     return run(qp_params, sorted(results, key=lambda x: x["num_trial"]))
 
