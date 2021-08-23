@@ -15,6 +15,7 @@ sam/local/invoke:
 	sam local invoke --event events/apigateway-proxy.json
 
 .PHONY: sam/deploy
+sam/deploy:
 	sam deploy
 
 .PHONY: curl
