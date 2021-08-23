@@ -1,0 +1,17 @@
+version=0.1
+[default.global.parameters]
+stack_name = "kokutou-questplus"
+
+[default.deploy.parameters]
+stack_name = "kokutou-questplus"
+#s3_bucket = "kokutou"
+#s3_prefix = "kokutou"
+image_repository = "126223625663.dkr.ecr.ap-northeast-1.amazonaws.com/kokutou-questplus"
+region = "ap-northeast-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+tags = "project=\"kokutou\" stage=\"production\""
+
+#[default.build.parameters]
+#container_env_var = ["Function1.GITHUB_TOKEN=TOKEN1", "Function2.GITHUB_TOKEN=TOKEN2"]
+#container_env_var_file = "env.json"
