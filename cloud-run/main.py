@@ -6,9 +6,15 @@ import urllib.parse
 from typing import List
 
 import questplus as qp
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
+
+
+@app.route("/ping")
+def ping():
+    """Get Cloud Run environment variables."""
+    return "pong"
 
 
 @app.route("/hello")
@@ -17,10 +23,14 @@ def hello_world():
     return "Hello {}!".format(name)
 
 
-def lambda_handler(event, context):
+@app.route("/next_stim", methods=["POST"])
+def next_stim():
     try:
-        qp_params = json.loads(urllib.parse.unquote(event["body"]))["qp_params"]
-        results = json.loads(urllib.parse.unquote(event["body"]))["results"]
+        qp_params = json.loads(urllib.parse.unquote(request.get_data()))["qp_params"]
+        results = json.loads(urllib.parse.unquote(request.get_data()))["results"]
+        results = sorted(results, key=lambda r: r["num_trial"])
+        print(qp_params)
+        print(results)
     except Exception as e:
         print(e, file=sys.stderr)
         return {
@@ -28,7 +38,7 @@ def lambda_handler(event, context):
             "body": json.dumps({"message": "request body is empty or invalid"})
         }
 
-    return run(qp_params, sorted(results, key=lambda x: x["num_trial"]))
+    return run(qp_params, results)
 
 
 def run(qp_params: dict, results: List[dict]) -> dict:
