@@ -1,9 +1,14 @@
-SERVICE_NAME := kookutou
+SERVICE_NAME := kokutou
+REGION := asia-northeast1
 
 
 .PHONY: set-region
 set-region:
 	gcloud config set run/region asia-northeast1
+
+.PHONY: show-service-url
+show-service-url:
+	gcloud run services describe $(SERVICE_NAME) --region $(REGION) --format 'value(status.url)'
 
 .PHONY: deploy
 deploy:
