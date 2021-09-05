@@ -1,7 +1,7 @@
 import { firebaseConfig } from "../env";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, GoogleAuthProvider,signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const Firebase = () => {
   // Initialize Firebase
@@ -18,14 +18,16 @@ const Firebase = () => {
     },
     loginProviders() {
       return {
-        google(){
-          return new GoogleAuthProvider().addScope("https://www.googleapis.com/auth/contacts.readonly");
-        }
+        google() {
+          return new GoogleAuthProvider().addScope(
+            "https://www.googleapis.com/auth/contacts.readonly",
+          );
+        },
       };
     },
-    signInWithPopup(){
-      return signInWithPopup
-    }
+    signInWithPopup() {
+      return signInWithPopup;
+    },
   };
 };
 
