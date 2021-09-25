@@ -1,5 +1,7 @@
 import React from "react";
 
-export const General: React.VFC = () => {
+const General: React.VFC = () => {
   return <div>general page</div>;
 };
+
+export default General;

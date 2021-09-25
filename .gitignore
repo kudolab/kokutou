@@ -386,3 +386,6 @@ Temporary Items
 .apdisk
 
 .gradle
+
+.env.local
+.env.production
