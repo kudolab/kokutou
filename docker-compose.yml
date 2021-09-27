@@ -4,7 +4,7 @@ services:
   frontend:
     build:
       context: ./frontend
-    command: yarn run dev
+    command: npm run dev
     container_name: frontend
 
     # ポートマッピング。これがないとブラウザと通信できなかったりcurlできなかったりする。
@@ -26,7 +26,7 @@ services:
     command: python3 run.py
     container_name: backend
     ports:
-      - 5000
+      - 5000:5000
     env_file:
       - ./backend/.dev.env
     volumes:

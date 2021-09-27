@@ -1,25 +1,35 @@
-import { getFirebaseAdmin, init } from "next-firebase-auth";
+import { init } from "next-firebase-auth";
 import { cookieConfig, firebaseAdminConfig, firebaseAuthConfig, firebaseConfig } from "../env";
-import * as admin from "firebase-admin";
 
 const TWELVE_DAYS_IN_MS = 12 * 60 * 60 * 24 * 1000;
 
 const initAuth = () => {
-  console.log(firebaseConfig);
+  // console.log(firebaseConfig);
+  // console.log(firebaseAdminConfig);
+
+  const firebaseAdminInitConfig = (() => {
+    if (typeof window === "undefined") {
+      return {
+        credential: {
+          projectId: firebaseAdminConfig.projectId,
+          clientEmail: firebaseAdminConfig.clientEmail,
+          privateKey: firebaseAdminConfig.privateKey,
+        },
+        databaseURL: firebaseConfig.databaseURL,
+      };
+    } else {
+      return {
+        credential: undefined,
+      };
+    }
+  })();
   init({
     authPageURL: "/auth",
     appPageURL: "/",
     loginAPIEndpoint: "/api/login", // required
     logoutAPIEndpoint: "/api/logout", // required
-    firebaseAuthEmulatorHost: firebaseAuthConfig.emulatorHost,
-    firebaseAdminInitConfig: {
-      credential: {
-        projectId: firebaseAdminConfig.projectId,
-        clientEmail: firebaseAdminConfig.clientEmail,
-        privateKey: firebaseAdminConfig.privateKey,
-      },
-      databaseURL: firebaseConfig.databaseURL,
-    },
+    // firebaseAuthEmulatorHost: firebaseAuthConfig.emulatorHost,
+    firebaseAdminInitConfig: firebaseAdminInitConfig,
     firebaseClientInitConfig: { ...firebaseConfig },
     cookies: {
       name: "Kokutou", // required

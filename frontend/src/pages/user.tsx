@@ -1,13 +1,54 @@
-import React from "react";
-import { NeedLogin } from "../components/NeedLogin";
-import { AuthContext } from "../contexts/AuthContext";
+// import React from "react";
+// import { NeedLogin } from "../components/NeedLogin";
+// import { AuthContext } from "../contexts/AuthContext";
+//
+// const User: React.VFC = () => {
+//   const authContext = React.useContext(AuthContext);
+//   if (authContext.uid === null) {
+//     return <NeedLogin />;
+//   }
+//   return <div>user page</div>;
+// };
+//
+// export default User;
 
-const User: React.VFC = () => {
-  const authContext = React.useContext(AuthContext);
-  if (authContext.uid === null) {
-    return <NeedLogin />;
-  }
-  return <div>user page</div>;
+import React from "react";
+import { useAuthUser, withAuthUser, withAuthUserTokenSSR } from "next-firebase-auth";
+// import Header from '../components/Header'
+// import DemoPageLinks from '../components/DemoPageLinks'
+
+const styles = {
+  content: {
+    padding: 32,
+  },
+  infoTextContainer: {
+    marginBottom: 32,
+  },
 };
 
-export default User;
+const Demo = () => {
+  const AuthUser = useAuthUser();
+  return (
+    <div>
+      {/*<Header email={AuthUser.email} signOut={AuthUser.signOut} />*/}
+      <div style={styles.content}>
+        <div style={styles.infoTextContainer}>
+          <h3>Home</h3>
+          <p>
+            This page does not require authentication, so it will not redirect to the login page if
+            you are not signed in.
+          </p>
+          <p>
+            If you remove `getServerSideProps` from this page, it will be static and load the authed
+            user only on the client side.
+          </p>
+        </div>
+        {/*<DemoPageLinks />*/}
+      </div>
+    </div>
+  );
+};
+
+export const getServerSideProps = withAuthUserTokenSSR()();
+
+export default withAuthUser()(Demo);
