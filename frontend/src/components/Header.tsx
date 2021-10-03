@@ -1,27 +1,27 @@
 import React from "react";
-import { AuthContext } from "../contexts/AuthContext";
-// import AuthService from "../lib/Auth";
+import auth from "../lib/auth";
 
-export const Header: React.VFC = () => {
-  const authContext = React.useContext(AuthContext);
-  React.useEffect(() => {
-    // AuthService.observeUid((maybeUid) => {
-    //   authContext.setUid(maybeUid);
-    // });
-  }, []);
+// type HeaderProps = {
+//   authState: any;
+// };
+
+export const Header: React.VFC = (props) => {
+  // console.debug("in header props json: ", JSON.stringify(props));
+  console.debug("in header state: ", props);
 
   return (
     <header>
       <h1 className="appname-h1">{"Kokutou"}</h1>
-      {/*{authContext.uid === null ? (*/}
-      {/*  <button className={"login-button"} onClick={() => AuthService.login()}>*/}
-      {/*    ログイン*/}
-      {/*  </button>*/}
-      {/*) : (*/}
-      {/*  <button className={"login-button"} onClick={() => AuthService.logout()}>*/}
-      {/*    ログアウト*/}
-      {/*  </button>*/}
-      {/*)}*/}
+      {/*{props}*/}
+      {props ? (
+        <button className={"login-button"} onClick={() => auth.login()}>
+          ログイン
+        </button>
+      ) : (
+        <button className={"login-button"} onClick={() => auth.logout()}>
+          ログアウト
+        </button>
+      )}
     </header>
   );
 };

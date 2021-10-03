@@ -5,17 +5,20 @@ import { Header } from "../components/Header";
 import { AuthContext } from "../contexts/AuthContext";
 import authReducer from "../lib/authReducer";
 import { useEffect, useReducer } from "react";
-import { listenAuthState } from "../lib/auth";
+import auth from "../lib/auth";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [state, dispatch] = useReducer(authReducer.reducer, authReducer.initialState);
+  console.log("myapp");
   useEffect(() => {
-    return listenAuthState(dispatch);
+    console.debug("state");
+    console.dir(state);
+    return auth.listenAuthState(dispatch);
   }, []);
 
   return (
     <AuthContext.Provider value={state}>
-      <Header />
+      <Header {...state} />
       <Component {...pageProps} />
     </AuthContext.Provider>
   );

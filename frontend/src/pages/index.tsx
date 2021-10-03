@@ -31,19 +31,20 @@
 //     </div>
 //   );
 // }
-import { auth, Login, Logout } from "../lib/auth";
+import auth from "../lib/auth";
+import { useEffect } from "react";
 
 const IndexPage = () => (
   <>
     <h1>Hello Next.js 👋</h1>
     <div>
-      <button onClick={() => Login()}>ログイン</button>
-      <button onClick={() => Logout()}>ログアウト</button>
+      <button onClick={() => auth.login()}>ログイン</button>
+      <button onClick={() => auth.logout()}>ログアウト</button>
     </div>
     <div>
       <pre>
-        {auth.currentUser
-          ? auth.currentUser.displayName + "でログインしています"
+        {auth.currentUser()
+          ? auth.currentUser().displayName + "でログインしています"
           : "ログインしていません"}
       </pre>
     </div>
