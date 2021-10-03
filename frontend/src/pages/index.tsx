@@ -32,23 +32,37 @@
 //   );
 // }
 import auth from "../lib/auth";
-import { useEffect } from "react";
+import { CurrentUser } from "../components/CurrentUser";
+import { NeedLogin } from "../components/NeedLogin";
 
-const IndexPage = () => (
-  <>
-    <h1>Hello Next.js 👋</h1>
-    <div>
-      <button onClick={() => auth.login()}>ログイン</button>
-      <button onClick={() => auth.logout()}>ログアウト</button>
-    </div>
-    <div>
-      <pre>
-        {auth.currentUser()
-          ? auth.currentUser().displayName + "でログインしています"
-          : "ログインしていません"}
-      </pre>
-    </div>
-  </>
-);
+const IndexPage = () => {
+  if (auth.currentUser() === null) {
+    return (
+      <>
+        <h1>Hello Next.js 👋</h1>
+        <div>
+          <NeedLogin />
+        </div>
+        <div>
+          <button onClick={() => auth.login()}>ログイン</button>
+        </div>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <h1>Hello Next.js 👋</h1>
+      <div>
+        <CurrentUser user={auth.currentUser()} />
+      </div>
+      <div>
+        <button onClick={() => auth.logout()}>ログアウト</button>
+      </div>
+    </>
+  );
+};
+
+const UserLoading: React.VFC = () => <div>ロード中</div>;
 
 export default IndexPage;

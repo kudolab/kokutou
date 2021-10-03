@@ -1,3 +1,4 @@
+import firebase from "firebase";
 import FirebaseFactory from "./firebase";
 
 const Auth = () => {
@@ -113,7 +114,7 @@ const Auth = () => {
     });
   };
 
-  const currentUser = () => FirebaseFactory.auth().currentUser;
+  const currentUser = (): firebase.User | null => FirebaseFactory.auth().currentUser;
 
   return {
     login,
@@ -121,7 +122,7 @@ const Auth = () => {
     sessionToken,
     observeUid,
     listenAuthState,
-    currentUser
+    currentUser,
   };
 };
 
