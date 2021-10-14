@@ -1,0 +1,158 @@
+openapi: 3.0.0
+info:
+  title: kokutou
+  version: '1.0'
+  contact:
+    name: 瀧澤哲
+    email: tetsu.takizawa5@gmail.com
+  license:
+    name: Apache 2.0
+servers:
+  - url: 'http://localhost:5000'
+    description: backend
+paths:
+  '/users/{user_id}':
+    parameters:
+      - schema:
+          type: string
+        name: user_id
+        in: path
+        required: true
+    get:
+      summary: Get User Info by User ID
+      tags: []
+      responses:
+        '200':
+          description: User Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Get User Alice Smith:
+                  value:
+                    id: 142
+                    firebase_uid: daa7e22f-9c3c-4971-a761-ec31fe9ff405
+                    display_name: Alice
+                    email: alice.smith@gmail.com
+        '404':
+          description: User Not Found
+      operationId: get_user
+      description: ユーザーIDからユーザーを取得
+    patch:
+      summary: Update User Information
+      operationId: update_user
+      responses:
+        '200':
+          description: User Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                Updated User Rebecca Baker:
+                  value:
+                    display_name: Rebecca
+                    email: rebecca@gmail.com
+        '404':
+          description: User Not Found
+        '409':
+          description: Email Already Taken
+      description: ユーザー情報を更新
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateUser'
+  /user:
+    post:
+      summary: Create New User
+      operationId: create_user
+      responses:
+        '200':
+          description: User Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                New User Bob Fellow:
+                  value:
+                    firebase_uid: d6fbbe27-ffdb-465c-992e-083b4a8b9a74
+                    display_name: bob
+                    email: bob.fellow@gmail.com
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+            multipart/form-data:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Missing Required Information
+        '409':
+          description: Email Already Taken
+      description: 新ユーザー作成
+      x-internal: false
+      requestBody:
+        $ref: '#/components/requestBodies/CreateUser'
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      description: ''
+      x-examples:
+        Alice Smith:
+          id: 142
+          firstName: Alice
+          lastName: Smith
+          email: alice.smith@gmail.com
+          dateOfBirth: '1997-10-31'
+          emailVerified: true
+          signUpDate: '2019-08-24'
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the given user.
+        firebase_uid:
+          type: string
+          description: Unique identifier for the given user.
+        display_name:
+          type: string
+        email:
+          type: string
+          format: email
+        created_at:
+          type: string
+          format: date
+          description: The date that the user was created.
+      required:
+        - id
+        - firebase_uid
+  requestBodies:
+    CreateUser:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              firebase_uid:
+                type: string
+              display_name:
+                type: string
+              email:
+                type: string
+                format: email
+            required:
+              - firebase_uid
+              - display_name
+              - email
+    UpdateUser:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              display_name:
+                type: string
+              email:
+                type: string
