@@ -4,6 +4,7 @@ import Hero from 'components/hero';
 import Header from 'components/header';
 import WhatIsThis from 'components/what-is-this';
 import Method from 'components/method';
+import Privacy from 'components/privacy';
 
 export default function Home() {
   return (
@@ -17,7 +18,8 @@ export default function Home() {
       <main>
         <Hero />
         <WhatIsThis />
-        <Method/>
+        <Method />
+        <Privacy />
       </main>
     </Box>
   );
