@@ -6,7 +6,7 @@ import StartButton from 'components/start-button';
 
 export default function Header() {
   return (
-    <Flex as="header" position="fixed" w="100%" boxShadow="base">
+    <Flex as="header" position="fixed" w="100%" boxShadow="base" bg="white" zIndex={2}>
       <HStack p="10px" pl="20px" spacing="20px" align="center" justify="center">
         <IconHeadphone width="32px" height="32px" />
         <Link href="/">
