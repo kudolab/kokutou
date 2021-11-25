@@ -33,5 +33,7 @@ module.exports = {
             'namedComponents': 'function-declaration',
             'unnamedComponents': 'arrow-function',
         }],
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': ['error'],
     },
 };
