@@ -19,6 +19,11 @@ module.exports = {
     'react',
     '@typescript-eslint',
   ],
+  'settings': {
+    'import/resolver': {
+      typescript: {},
+    },
+  },
   'rules': {
     'indent': ['error', 2],
     'react/jsx-filename-extension': [
