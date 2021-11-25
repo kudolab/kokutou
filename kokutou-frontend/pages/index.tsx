@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Hero from 'components/hero';
 import Header from 'components/header';
 import WhatIsThis from 'components/what-is-this';
+import Method from 'components/method';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <main>
         <Hero />
         <WhatIsThis />
+        <Method/>
       </main>
     </Box>
   );
