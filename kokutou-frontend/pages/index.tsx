@@ -2,6 +2,7 @@ import { Box } from '@chakra-ui/react';
 import Head from 'next/head';
 import Hero from 'components/hero';
 import Header from 'components/header';
+import WhatIsThis from 'components/what-is-this';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <WhatIsThis />
       </main>
     </Box>
   );
