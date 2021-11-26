@@ -5,6 +5,7 @@ import Header from 'components/header';
 import WhatIsThis from 'components/what-is-this';
 import Method from 'components/method';
 import Privacy from 'components/privacy';
+import RequestForCooperation from 'components/request-for-cooperation';
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
         <WhatIsThis />
         <Method />
         <Privacy />
+        <RequestForCooperation />
       </main>
     </Box>
   );
