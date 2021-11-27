@@ -17,7 +17,6 @@ import {
 } from '@chakra-ui/react';
 
 import React, { useEffect, useState } from 'react';
-import IconHeadphone from 'components/icon-headphone';
 import Image from 'next/image';
 
 function P1() {
@@ -25,7 +24,7 @@ function P1() {
     <Container mergin="1rem" minH="25rem" centerContent>
       <Center minH="25rem">
         <VStack spacing="1.5rem">
-          <IconHeadphone width={150} height={150} />
+          return <Image src="/icon-headphone.png" alt="icon-headphone" width="150" height="150" />;
           <Box>
             <Text fontSize="lg" align="center">実験が始まると音が流れます。</Text>
             <Text fontSize="lg" align="center">

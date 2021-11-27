@@ -1,7 +1,8 @@
 import {
   Box, Flex, Container, Heading, HStack, Stack, Text,
 } from '@chakra-ui/react';
-import ThinkingRotation from 'components/thinking-rotation';
+import Image from 'next/image';
+import React from 'react';
 
 export default function WhatIsThis() {
   return (
@@ -16,7 +17,7 @@ export default function WhatIsThis() {
             </Text>
           </Stack>
           <Flex p="50px" align="center" justify="center">
-            <ThinkingRotation width="400px" height="408px" />
+            <Image src="/thinking-rotation.png" alt="thinking-rotation" width="400" height="408" />
           </Flex>
         </HStack>
       </Container>
