@@ -93,7 +93,7 @@ export default function ExperimentPractice() {
                       console.log('incollect');
                       return (
                         <HStack spacing="0.5rem">
-                          <CheckIcon boxSize="2rem" color="red.500" />
+                          <CloseIcon boxSize="2rem" color="red.500" />
                           <Text fontSize="2xl">不正解</Text>
                         </HStack>
                       );
