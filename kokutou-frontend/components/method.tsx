@@ -1,7 +1,7 @@
 import {
   Box, Container, Flex, Heading, HStack, Stack, Text,
 } from '@chakra-ui/react';
-import ExperimentPage from 'components/experiment-page';
+import ImageExperimentPage from 'components/image-experiment-page';
 
 export default function Method() {
   return (
@@ -9,7 +9,7 @@ export default function Method() {
       <Container maxW="container.lg" centerContent>
         <HStack spacing="40px">
           <Flex p="50px" align="center" justify="center">
-            <ExperimentPage width="400px" height="300px" />
+            <ImageExperimentPage width="400px" height="300px" />
           </Flex>
           <Stack spacing="12px">
             <Heading as="h2" size="md">実験方法</Heading>

@@ -1,15 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
 
-type ExperimentPageProps = {
+type ImageExperimentPageProps = {
   width: string,
   height: string
 }
 
-export default function ExperimentPage({
+export default function ImageExperimentPage({
   width,
   height,
-}: ExperimentPageProps) {
+}: ImageExperimentPageProps) {
   return (
     <Image
       src="/experiment-page.png"
