@@ -26,6 +26,8 @@ const PageStates = {
 type PageState = typeof PageStates[keyof typeof PageStates];
 
 export default function ExperimentPractice() {
+  const maxSoundNumber = 10;
+
   const [soundNumber, setSoundNumber] = useState(1);
   const [pageState, setPageState] = useState<PageState>(PageStates.DisplayingDescription);
   const [isCollectAnswer, setIsCollectAnswer] = useState(true);
@@ -64,7 +66,8 @@ export default function ExperimentPractice() {
               <Box minW="16rem">
                 <Text fontSize="lg" align="center">
                   {soundNumber}
-                  / 100
+                  /
+                  {maxSoundNumber}
                 </Text>
                 <Box>
                   <Progress colorScheme="teal" size="xs" value={soundNumber} />
