@@ -24,7 +24,7 @@ function P1() {
     <Container mergin="1rem" minH="25rem" centerContent>
       <Center minH="25rem">
         <VStack spacing="1.5rem">
-          return <Image src="/icon-headphone.png" alt="icon-headphone" width="150" height="150" />;
+          <Image src="/icon-headphone.png" alt="icon-headphone" width="150" height="150" />
           <Box>
             <Text fontSize="lg" align="center">実験が始まると音が流れます。</Text>
             <Text fontSize="lg" align="center">
@@ -107,8 +107,6 @@ export default function Usage() {
       <ModalContent>
         <ModalHeader>
           実験説明
-          {' '}
-          {currentPage}
           <Progress colorScheme="teal" size="xs" value={currentPage * 25} />
         </ModalHeader>
         <ModalBody>
