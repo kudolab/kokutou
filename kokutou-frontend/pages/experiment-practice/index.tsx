@@ -31,15 +31,20 @@ export default function ExperimentPractice() {
   const [soundNumber, setSoundNumber] = useState(1);
   const [pageState, setPageState] = useState<PageState>(PageStates.DisplayingDescription);
   const [isCollectAnswer, setIsCollectAnswer] = useState(true);
-  const soundList = [];
 
   const onClickRotationButton = (isClockWise: boolean) => {
     // TODO if isCollect
     // setIsAnswerSubmitted(true);
     setPageState(PageStates.AnswerSubmitted);
     // TODO
-    setIsCollectAnswer(true);
+    setIsCollectAnswer(isClockWise);
     console.log('page state: ', pageState);
+  };
+
+  const onClickNextSoundButton = () => {
+    // TODO
+    setPageState(PageStates.PlayingSound);
+    setSoundNumber(((prevSoundNumber) => prevSoundNumber + 1));
   };
 
   // TODO play sound
@@ -130,7 +135,7 @@ export default function ExperimentPractice() {
                 {
                   pageState === PageStates.AnswerSubmitted
                     ? (
-                      <Button colorScheme="teal" size="lg" width="9rem">
+                      <Button colorScheme="teal" size="lg" width="9rem" onClick={() => onClickNextSoundButton()}>
                         次の音を再生
                       </Button>
                     )
