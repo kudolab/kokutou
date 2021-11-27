@@ -4,6 +4,7 @@ import {
   Center,
   Container,
   HStack,
+  VStack,
   Modal,
   ModalBody,
   ModalContent,
@@ -13,9 +14,8 @@ import {
   Progress,
   Text,
   useDisclosure,
-  VStack,
 } from '@chakra-ui/react';
-
+import {CheckCircleIcon} from '@chakra-ui/icons'
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 
@@ -83,6 +83,61 @@ function P2() {
   );
 }
 
+function P3() {
+  return (
+    <Container mergin="1rem" minH="25rem" centerContent>
+      <Center minH="25rem">
+        <VStack spacing="1.5rem">
+          <HStack spacing="2rem">
+            <Box>
+              <Image
+                src="/open-eyes.png"
+                alt="open-eyes"
+                width="150"
+                height="145"
+              />
+            </Box>
+            <Box>
+              <Image
+                src="/close-eyes.png"
+                alt="close-eyes"
+                width="150"
+                height="145"
+              />
+            </Box>
+          </HStack>
+          <Box>
+            <Text fontSize="lg" align="center">
+              音を聞くときは目を
+              <b>閉じて</b>
+              ください。
+            </Text>
+          </Box>
+        </VStack>
+      </Center>
+    </Container>
+  );
+}
+
+function P4() {
+  return (
+    <Container mergin="1rem" minH="25rem" centerContent>
+      <Center minH="25rem">
+        <VStack spacing="1.5rem">
+          <Box>
+            <CheckCircleIcon color="teal.500" w="8rem" h="8rem" />
+          </Box>
+          <Box>
+            <Text fontSize="lg" align="center">
+              まずは練習でイメージを掴みましょう！
+            </Text>
+          </Box>
+        </VStack>
+      </Center>
+    </Container>
+  );
+}
+
 export default function Usage() {
   const {
     isOpen,
@@ -99,6 +154,8 @@ export default function Usage() {
   const els = {
     1: <P1 />,
     2: <P2 />,
+    3: <P3 />,
+    4: <P4 />
   };
 
   return (
