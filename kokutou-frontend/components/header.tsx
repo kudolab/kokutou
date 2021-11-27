@@ -8,7 +8,7 @@ import React from 'react';
 export default function Header() {
   return (
     <Flex as="header" position="fixed" w="100%" boxShadow="base" bg="white" zIndex={2}>
-      <HStack p="10px" pl="20px" spacing="20px" align="center" justify="center">
+      <HStack p="0.625rem" pl="1.25rem" spacing="1.25rem" align="center" justify="center">
         <Image src="/icon-headphone.png" alt="icon-headphone" width="32" height="32" />
         <Link href="/">
           この実験はなに？
@@ -25,9 +25,9 @@ export default function Header() {
       </HStack>
       <Spacer />
       <HStack
-        p="10px"
-        pr="20px"
-        spacing="20px"
+        p="0.625rem"
+        pr="1.25rem"
+        spacing="1.25rem"
         align="center"
         justify="center"
         justifySelf="flex-end"

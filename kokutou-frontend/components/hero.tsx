@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <Container maxW="container.lg" height="100vh" centerContent>
       <Center h="100vh">
-        <VStack spacing="40px">
+        <VStack spacing="2.5rem">
           <Image src="/icon-headphone.png" alt="icon-headphone" width="300" height="300" />
           <Heading as="h1" size="xl">オンライン音像定位実験</Heading>
           <StartButton size="lg" />

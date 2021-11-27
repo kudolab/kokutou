@@ -8,8 +8,8 @@ export default function Privacy() {
   return (
     <Box bg="gray.50">
       <Container maxW="container.lg" centerContent>
-        <HStack spacing="40px">
-          <Stack spacing="12px">
+        <HStack spacing="2.5rem">
+          <Stack spacing="0.75rem">
             <Heading as="h2" size="md">データの取り扱いについて</Heading>
             <Text>
               取得したデータや個人情報は、研究目的以外には使用しません。
@@ -19,7 +19,7 @@ export default function Privacy() {
               をご確認ください。
             </Text>
           </Stack>
-          <Flex p="50px" align="center" justify="center">
+          <Flex p="3.125rem" align="center" justify="center">
             <IconPrivacy />
           </Flex>
         </HStack>

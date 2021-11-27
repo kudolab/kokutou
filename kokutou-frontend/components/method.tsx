@@ -8,8 +8,8 @@ export default function Method() {
   return (
     <Box bg="white">
       <Container maxW="container.lg" centerContent>
-        <HStack spacing="40px">
-          <Flex p="50px" align="center" justify="center">
+        <HStack spacing="2.5rem">
+          <Flex p="3.125rem" align="center" justify="center">
             <Image
               src="/experiment-page.png"
               alt="experiment-page"
@@ -17,7 +17,7 @@ export default function Method() {
               height="300"
             />
           </Flex>
-          <Stack spacing="12px">
+          <Stack spacing="0.75rem">
             <Heading as="h2" size="md">実験方法</Heading>
             <Text>
               1. 時計回りまたは反時計回りに移動する音が再生されます。
