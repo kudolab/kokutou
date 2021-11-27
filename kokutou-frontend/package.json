@@ -8,6 +8,11 @@
     "lint": "next lint",
     "fix": "next lint --fix"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run fix"
+    }
+  },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.1",
     "@chakra-ui/react": "^1.7.2",
@@ -27,6 +32,7 @@
     "eslint-config-airbnb": "^19.0.1",
     "eslint-config-next": "12.0.4",
     "eslint-import-resolver-typescript": "^2.5.0",
+    "husky": "^7.0.4",
     "typescript": "4.5.2"
   }
 }
