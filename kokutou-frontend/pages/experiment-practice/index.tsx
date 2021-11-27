@@ -82,7 +82,7 @@ export default function ExperimentPractice() {
                         console.log('collect');
                         return (
                           <HStack spacing="0.5rem">
-                            <CheckIcon boxSize="2rem" />
+                            <CheckIcon boxSize="2rem" color="green.500" />
                             <Text fontSize="2xl">正解</Text>
                           </HStack>
                         );
@@ -90,8 +90,8 @@ export default function ExperimentPractice() {
                       console.log('incollect');
                       return (
                         <HStack spacing="0.5rem">
-                          <CloseIcon boxSize="2rem" />
-                          <Text fontSize="xl">不正解</Text>
+                          <CheckIcon boxSize="2rem" color="red.500" />
+                          <Text fontSize="2xl">不正解</Text>
                         </HStack>
                       );
                     })()
