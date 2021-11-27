@@ -16,12 +16,14 @@ import React, { useState } from 'react';
 import CW from 'components/experiment-practice/cw';
 import CCW from 'components/experiment-practice/ccw';
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
+import Confirmation from 'components/experiment-practice/cifirmation';
 
 const PageStates = {
   DisplayingDescription: 'DisplayingDescription',
   PlayingSound: 'PlayingSound',
   WaitingAnswer: 'WaitingAnswer',
   AnswerSubmitted: 'AnswerSubmitted',
+  DisplayingConfirmaiton: 'DisplayingConfirmaiton',
 } as const;
 type PageState = typeof PageStates[keyof typeof PageStates];
 
@@ -31,6 +33,10 @@ export default function ExperimentPractice() {
   const [soundNumber, setSoundNumber] = useState(1);
   const [pageState, setPageState] = useState<PageState>(PageStates.DisplayingDescription);
   const [isCollectAnswer, setIsCollectAnswer] = useState(true);
+
+  if (soundNumber === maxSoundNumber && pageState === PageStates.AnswerSubmitted) {
+    setPageState(PageStates.DisplayingConfirmaiton);
+  }
 
   const onClickRotationButton = (isClockWise: boolean) => {
     // TODO if isCollect
@@ -67,6 +73,13 @@ export default function ExperimentPractice() {
         <Usage
           isOpen={pageState === PageStates.DisplayingDescription}
           onClose={() => setPageState(PageStates.PlayingSound)}
+        />
+        <Confirmation
+          isOpen={pageState === PageStates.DisplayingConfirmaiton}
+          onCloseWithReset={() => {
+            setSoundNumber(1);
+            setPageState(PageStates.PlayingSound);
+          }}
         />
         <Container maxW="container.lg" height="100vh" centerContent>
           <Center h="100vh">

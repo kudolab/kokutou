@@ -157,7 +157,7 @@ export default function Usage({ isOpen, onClose }:UsageProps) {
       <ModalContent>
         <ModalHeader>
           実験説明
-          <Progress colorScheme="teal" size="xs" value={currentPage * 25} />
+          <Progress colorScheme="teal" size="xs" value={currentPage * (100 / Object.keys(els).length)} />
         </ModalHeader>
         <ModalBody>
           {els[currentPage] as Element ?? (<Text>error</Text>)}
