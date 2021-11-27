@@ -4,10 +4,10 @@ import {
   ButtonGroup,
   Center,
   Container,
+  HStack,
   Progress,
   Text,
   VStack,
-  HStack,
 } from '@chakra-ui/react';
 import Head from 'next/head';
 import Usage from 'components/experiment-practice/usage';
@@ -15,7 +15,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import CW from 'components/experiment-practice/cw';
 import CCW from 'components/experiment-practice/ccw';
-import { CloseIcon, CheckIcon } from '@chakra-ui/icons';
+import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 
 const PageStates = {
   DisplayingDescription: 'DisplayingDescription',
@@ -48,7 +48,11 @@ export default function ExperimentPractice() {
   };
 
   // TODO play sound
-  setTimeout(() => { setPageState(PageStates.WaitingAnswer); }, 5000);
+  setTimeout(() => {
+    if (pageState === PageStates.PlayingSound) {
+      setPageState(PageStates.WaitingAnswer);
+    }
+  }, 1);
 
   console.log('page state: ', pageState);
 
@@ -75,7 +79,11 @@ export default function ExperimentPractice() {
                   {maxSoundNumber}
                 </Text>
                 <Box>
-                  <Progress colorScheme="teal" size="xs" value={soundNumber} />
+                  <Progress
+                    colorScheme="teal"
+                    size="xs"
+                    value={soundNumber / maxSoundNumber * 100}
+                  />
                 </Box>
               </Box>
               <Box minW="16rem" minH="6rem">
@@ -127,15 +135,25 @@ export default function ExperimentPractice() {
                 </Button>
               </ButtonGroup>
               <ButtonGroup size="lg" spacing="2rem">
-                <Button size="lg" variant="outline" width="9rem" onClick={() => setPageState(PageStates.PlayingSound)}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  width="9rem"
+                  onClick={() => setPageState(PageStates.PlayingSound)}
+                >
                   {' '}
                   {/* TODO play same sound */}
                   もう一度再生
                 </Button>
                 {
-                  pageState === PageStates.AnswerSubmitted
+                  pageState === PageStates.AnswerSubmitted && soundNumber < maxSoundNumber
                     ? (
-                      <Button colorScheme="teal" size="lg" width="9rem" onClick={() => onClickNextSoundButton()}>
+                      <Button
+                        colorScheme="teal"
+                        size="lg"
+                        width="9rem"
+                        onClick={() => onClickNextSoundButton()}
+                      >
                         次の音を再生
                       </Button>
                     )
