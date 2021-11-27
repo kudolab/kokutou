@@ -4,7 +4,6 @@ import {
   Center,
   Container,
   HStack,
-  VStack,
   Modal,
   ModalBody,
   ModalContent,
@@ -13,10 +12,10 @@ import {
   ModalOverlay,
   Progress,
   Text,
-  useDisclosure,
+  VStack,
 } from '@chakra-ui/react';
-import {CheckCircleIcon} from '@chakra-ui/icons'
-import React, { useEffect, useState } from 'react';
+import { CheckCircleIcon } from '@chakra-ui/icons';
+import React, { useState } from 'react';
 import Image from 'next/image';
 
 function P1() {
@@ -138,24 +137,18 @@ function P4() {
   );
 }
 
-export default function Usage() {
-  const {
-    isOpen,
-    onOpen,
-    onClose,
-  } = useDisclosure();
+type UsageProps = {
+  isOpen: boolean,
+  onClose: () => void
+}
 
-  useEffect(() => {
-    onOpen();
-  }, []);
-
+export default function Usage({ isOpen, onClose }:UsageProps) {
   const [currentPage, setCurrentPage] = useState(1);
-
   const els = {
     1: <P1 />,
     2: <P2 />,
     3: <P3 />,
-    4: <P4 />
+    4: <P4 />,
   };
 
   return (
@@ -172,10 +165,25 @@ export default function Usage() {
         <ModalFooter>
           <HStack spacing="1rem">
             {currentPage > 1 && currentPage <= 4
-              ? <Button colorScheme="teal" variant="outline" onClick={() => setCurrentPage(currentPage - 1)}>前へ</Button> : ''}
+              ? (
+                <Button
+                  colorScheme="teal"
+                  variant="outline"
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                >
+                  前へ
+                </Button>
+              ) : ''}
             {currentPage >= 1 && currentPage < 4
-              ? <Button colorScheme="teal" onClick={() => setCurrentPage(currentPage + 1)}>次へ</Button> : ''}
-            {currentPage === 4 ? <Button colorScheme="teal" onClick={onClose}>はじめる</Button> : '' }
+              ? (
+                <Button
+                  colorScheme="teal"
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                >
+                  次へ
+                </Button>
+              ) : ''}
+            {currentPage === 4 ? <Button colorScheme="teal" onClick={onClose}>はじめる</Button> : ''}
           </HStack>
         </ModalFooter>
       </ModalContent>
