@@ -64,15 +64,20 @@ function P3() {
         <VStack spacing="1.5rem">
           <IconRocket />
           <Box>
-            <Text fontSize="lg" align="center">
-              音は全部で100回流れます。
+            <Text fontSize="xl" align="center">
+              実験を開始します。
             </Text>
-            <Text fontSize="lg" align="center">
-              所要時間は
-              <b>15分</b>
-              ほどです。
+            <Text fontSize="xl" align="center">
+              よろしくお願いします🙏
             </Text>
           </Box>
+          <Text fontSize="xs" align="center">
+            ※ はじめるボタンを押すことで
+            <Link href="/terms-of-participation">
+            参加規約
+            </Link>
+            に同意したものとみなします。
+          </Text>
         </VStack>
       </Center>
     </Container>
