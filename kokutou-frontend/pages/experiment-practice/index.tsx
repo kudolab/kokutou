@@ -95,7 +95,7 @@ export default function ExperimentPractice() {
                   <Progress
                     colorScheme="teal"
                     size="xs"
-                    value={soundNumber / maxSoundNumber * 100}
+                    value={(soundNumber / maxSoundNumber) * 100}
                   />
                 </Box>
               </Box>

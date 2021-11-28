@@ -1,12 +1,13 @@
 import { Button } from '@chakra-ui/react';
 
 type StartButtonProps = {
-  size: string
+  size: string,
+  onClick: ()=>void,
 }
 
-export default function StartButton({ size }: StartButtonProps) {
+export default function StartButton({ size, onClick }: StartButtonProps) {
   return (
-    <Button colorScheme="teal" size={size}>
+    <Button colorScheme="teal" size={size} onClick={onClick}>
       はじめる
     </Button>
   );

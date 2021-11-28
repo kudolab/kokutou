@@ -74,7 +74,7 @@ function P3() {
           <Text fontSize="xs" align="center">
             ※ はじめるボタンを押すことで
             <Link href="/terms-of-participation">
-            参加規約
+              参加規約
             </Link>
             に同意したものとみなします。
           </Text>
