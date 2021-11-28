@@ -142,9 +142,14 @@ type UsageProps = {
   onClose: () => void
 }
 
+interface NumberKeyObject {
+  // eslint-disable-next-line no-undef
+  [key: number]:JSX.Element
+}
+
 export default function Usage({ isOpen, onClose }:UsageProps) {
   const [currentPage, setCurrentPage] = useState(1);
-  const els = {
+  const els:NumberKeyObject = {
     1: <P1 />,
     2: <P2 />,
     3: <P3 />,
@@ -160,7 +165,7 @@ export default function Usage({ isOpen, onClose }:UsageProps) {
           <Progress colorScheme="teal" size="xs" value={currentPage * (100 / Object.keys(els).length)} />
         </ModalHeader>
         <ModalBody>
-          {els[currentPage] as Element ?? (<Text>error</Text>)}
+          {els[currentPage] ?? (<Text>error</Text>)}
         </ModalBody>
         <ModalFooter>
           <HStack spacing="1rem">

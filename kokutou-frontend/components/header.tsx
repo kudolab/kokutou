@@ -4,8 +4,10 @@ import {
 import StartButton from 'components/start-button';
 import Image from 'next/image';
 import React from 'react';
+import { useRouter } from 'next/router';
 
 export default function Header() {
+  const router = useRouter();
   return (
     <Flex as="header" position="fixed" w="100%" boxShadow="base" bg="white" zIndex={2}>
       <HStack p="0.625rem" pl="1.25rem" spacing="1.25rem" align="center" justify="center">
@@ -32,7 +34,7 @@ export default function Header() {
         justify="center"
         justifySelf="flex-end"
       >
-        <StartButton size="md" />
+        <StartButton size="md" onClick={() => router.push('/experiment-practice')} />
       </HStack>
     </Flex>
   );
